@@ -16,10 +16,11 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMPANY_ID_GENERATOR")
     @SequenceGenerator(name = "COMPANY_ID_GENERATOR", sequenceName = "SEQ_COMPANY_ID", allocationSize = 1, initialValue = 1)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "name", length = 60)
     private String name;
+
     @Column(name = "nit", length = 10)
     private String nit;
 

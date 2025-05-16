@@ -5,6 +5,8 @@ import com.upb.modulo_01.entity.dto.CompanyRequestDto;
 import com.upb.modulo_01.repository.CompanyRepository;
 import com.upb.modulo_01.service.CompanyService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @Service
 public class CompanyServiceImpl implements CompanyService {
-    private final CompanyRepository companyRepository;
+
+    @Autowired
+    private CompanyRepository companyRepository;
 
     @Override
     public List<Company> listAll() {

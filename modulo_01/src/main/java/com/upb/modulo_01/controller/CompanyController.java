@@ -11,7 +11,6 @@ import java.util.List;
 
 
 @AllArgsConstructor
-
 @RestController
 @RequestMapping("/api/v1/companies")
 public class CompanyController {
@@ -22,7 +21,7 @@ public class CompanyController {
         try {
             return ResponseEntity.ok(companyService.listAll());
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.internalServerError().build();
         }
     }
 
