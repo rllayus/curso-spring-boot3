@@ -1,0 +1,28 @@
+16/05/25 16:21:09.816 [main] INFO  c.upb.modulo_01.Modulo01Application.logStarting 53 - Starting Modulo01Application using Java 23.0.1 with PID 67859 (/Users/rlaredo/Documents/UPB/curso-spring-boot3/modulo_01/target/classes started by rlaredo in /Users/rlaredo/Documents/UPB/curso-spring-boot3/modulo_01)
+16/05/25 16:21:09.817 [main] INFO  c.upb.modulo_01.Modulo01Application.logStartupProfileInfo 652 - No active profile set, falling back to 1 default profile: "default"
+16/05/25 16:21:10.336 [main] INFO  o.a.coyote.http11.Http11NioProtocol.log 168 - Initializing ProtocolHandler ["http-nio-8080"]
+16/05/25 16:21:10.336 [main] INFO  o.a.catalina.core.StandardService.log 168 - Starting service [Tomcat]
+16/05/25 16:21:10.336 [main] INFO  o.a.catalina.core.StandardEngine.log 168 - Starting Servlet engine: [Apache Tomcat/10.1.40]
+16/05/25 16:21:10.352 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log 168 - Initializing Spring embedded WebApplicationContext
+16/05/25 16:21:10.376 [main] INFO  com.upb.modulo_01.config.CorsFilter.init 22 - [init], CORS Filter init
+16/05/25 16:21:10.557 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection 109 - HikariPool-1 - Starting...
+16/05/25 16:21:10.631 [main] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast 554 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@23469199
+16/05/25 16:21:10.632 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection 122 - HikariPool-1 - Start completed.
+16/05/25 16:21:11.170 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor 258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+16/05/25 16:21:11.427 [main] INFO  o.a.coyote.http11.Http11NioProtocol.log 168 - Starting ProtocolHandler ["http-nio-8080"]
+16/05/25 16:21:11.438 [main] INFO  c.upb.modulo_01.Modulo01Application.logStarted 59 - Started Modulo01Application in 1.761 seconds (process running for 2.022)
+16/05/25 16:23:37.210 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close 349 - HikariPool-1 - Shutdown initiated...
+16/05/25 16:23:37.212 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close 351 - HikariPool-1 - Shutdown completed.
+16/05/25 16:23:38.338 [main] INFO  c.upb.modulo_01.Modulo01Application.logStarting 53 - Starting Modulo01Application using Java 23.0.1 with PID 67939 (/Users/rlaredo/Documents/UPB/curso-spring-boot3/modulo_01/target/classes started by rlaredo in /Users/rlaredo/Documents/UPB/curso-spring-boot3/modulo_01)
+16/05/25 16:23:38.339 [main] INFO  c.upb.modulo_01.Modulo01Application.logStartupProfileInfo 652 - No active profile set, falling back to 1 default profile: "default"
+16/05/25 16:23:38.899 [main] INFO  o.a.coyote.http11.Http11NioProtocol.log 168 - Initializing ProtocolHandler ["http-nio-8080"]
+16/05/25 16:23:38.900 [main] INFO  o.a.catalina.core.StandardService.log 168 - Starting service [Tomcat]
+16/05/25 16:23:38.900 [main] INFO  o.a.catalina.core.StandardEngine.log 168 - Starting Servlet engine: [Apache Tomcat/10.1.40]
+16/05/25 16:23:38.916 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log 168 - Initializing Spring embedded WebApplicationContext
+16/05/25 16:23:38.946 [main] INFO  com.upb.modulo_01.config.CorsFilter.init 22 - [init], CORS Filter init
+16/05/25 16:23:39.146 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection 109 - HikariPool-1 - Starting...
+16/05/25 16:23:39.211 [main] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast 554 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@763b0996
+16/05/25 16:23:39.212 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection 122 - HikariPool-1 - Start completed.
+16/05/25 16:23:39.779 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor 258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+16/05/25 16:23:40.042 [main] INFO  o.a.coyote.http11.Http11NioProtocol.log 168 - Starting ProtocolHandler ["http-nio-8080"]
+16/05/25 16:23:40.052 [main] INFO  c.upb.modulo_01.Modulo01Application.logStarted 59 - Started Modulo01Application in 1.876 seconds (process running for 2.209)
