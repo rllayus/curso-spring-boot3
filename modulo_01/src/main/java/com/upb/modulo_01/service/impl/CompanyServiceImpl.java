@@ -30,5 +30,6 @@ public class CompanyServiceImpl implements CompanyService {
                         .nit(company.getNit())
                         .state(company.getState())
                 .build());
+
     }
 }

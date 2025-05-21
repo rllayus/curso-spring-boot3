@@ -1,5 +1,6 @@
 package com.upb.modulo_01.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 @Setter
 @Comment("Tabla para almacenar los productos de una empresa")
 @Entity
-@Table(name = "product",  indexes = {@Index(name = "idx_company_id", columnList = "company_id")})
+@Table(name = "product", indexes = {@Index(name = "idx_company_id", columnList = "company_id")})
 public class Product {
     @Comment("Identificador del registros")
     @Id
@@ -38,6 +39,7 @@ public class Product {
     @Column(name = "stock")
     private int stock;
 
+    @JsonIgnore
     @Comment("Identificador de la empresa a la que pertence")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", referencedColumnName = "id", nullable = false)

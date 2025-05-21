@@ -4,12 +4,13 @@ import com.upb.modulo_01.entity.Company;
 import com.upb.modulo_01.entity.dto.CompanyRequestDto;
 import com.upb.modulo_01.service.CompanyService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@Slf4j
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/companies")
@@ -18,6 +19,7 @@ public class CompanyController {
 
     @GetMapping()
     public ResponseEntity<List<Company>> list() {
+        log.info("[list], Listando todas las empresas");
         try {
             return ResponseEntity.ok(companyService.listAll());
         } catch (Exception e) {
@@ -25,8 +27,9 @@ public class CompanyController {
         }
     }
 
-    @PostMapping()
-    public ResponseEntity<List<Company>> list(@RequestBody CompanyRequestDto dto) {
+    @PostMapping("/save")
+    public ResponseEntity<Void>
+    save(@RequestBody CompanyRequestDto dto) {
         try {
             companyService.save(dto);
             return ResponseEntity.ok().build();
