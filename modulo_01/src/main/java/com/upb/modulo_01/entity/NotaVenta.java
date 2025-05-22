@@ -24,7 +24,6 @@ public class NotaVenta {
     @Column(name = "id")
     private Long id;
 
-
     @Comment("Fecha de la venta")
     @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)

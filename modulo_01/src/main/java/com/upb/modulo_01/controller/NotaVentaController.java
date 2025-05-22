@@ -1,6 +1,7 @@
 package com.upb.modulo_01.controller;
 
 import com.upb.modulo_01.entity.dto.NotaVentaResponseDto;
+import com.upb.modulo_01.entity.dto.VentaRequestDto;
 import com.upb.modulo_01.service.NotaVentaService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,12 +37,11 @@ public class NotaVentaController {
         }
     }
 
-    @PostMapping("/save")
-    public ResponseEntity<List<NotaVentaResponseDto>> save(@RequestParam("id") Long id) {
-        log.info("[list], Listando todas las empresas");
+    @PostMapping("/vender")
+    public ResponseEntity<Void> save(@RequestBody VentaRequestDto requestDto) {
+        log.info("[vender], Vendiendo una nota de venta con el cliente con id: {} ", requestDto.getCustomerId());
         try {
-            notaVentaService.guardar(null);
-            notaVentaService.notificar(null);
+            notaVentaService.vender(requestDto);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
