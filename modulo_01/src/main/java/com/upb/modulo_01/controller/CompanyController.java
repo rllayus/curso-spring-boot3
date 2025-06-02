@@ -2,6 +2,7 @@ package com.upb.modulo_01.controller;
 
 import com.upb.modulo_01.entity.Company;
 import com.upb.modulo_01.entity.dto.CompanyRequestDto;
+import com.upb.modulo_01.entity.dto.PersonaDto;
 import com.upb.modulo_01.service.CompanyService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,16 @@ public class CompanyController {
     save(@RequestBody CompanyRequestDto dto) {
         try {
             companyService.save(dto);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    @PostMapping("/test")
+    public ResponseEntity<Void>
+    test(@RequestBody PersonaDto dto) {
+        try {
+            System.out.println(dto);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
