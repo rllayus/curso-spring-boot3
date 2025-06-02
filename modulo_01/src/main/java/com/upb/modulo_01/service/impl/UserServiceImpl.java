@@ -19,4 +19,16 @@ public class UserServiceImpl implements UserService {
     public Optional<MyUser> findById(Long id){
         return repository.findById(id);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<MyUser> findByUserIdToValidateSession(Long id) {
+        return this.repository.findById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<MyUser> findByUsername(String username) {
+        return repository.findByUsername(username);
+    }
 }

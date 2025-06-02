@@ -6,4 +6,6 @@ import java.util.Optional;
 
 public interface UserService {
     Optional<MyUser> findById(Long id);
+    Optional<MyUser> findByUserIdToValidateSession(Long id);
+    Optional<MyUser> findByUsername(String username);
 }
