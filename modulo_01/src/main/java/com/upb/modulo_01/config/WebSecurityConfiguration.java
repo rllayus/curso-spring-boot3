@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.session.SessionManagementFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -28,22 +29,24 @@ public class WebSecurityConfiguration implements WebMvcConfigurer, Serializable 
 
     @Bean
     @Order(1)
-    public SecurityFilterChain filterChain(HttpSecurity http, CorsFilter corsFilter) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, CorsFilter corsFilter, JwtTokenFilter jwtTokenFilter) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(corsFilter, SessionManagementFilter.class)
                 .authorizeHttpRequests(
                         authorizationManagerRequestMatcherRegistry ->
                                 authorizationManagerRequestMatcherRegistry
-                                        .requestMatchers(HttpMethod.GET,"/api/v1/companies").permitAll()
-                                        .requestMatchers(HttpMethod.GET,"/api/v1/nota-ventas").permitAll()
-                                        .requestMatchers(HttpMethod.GET,"/api/v1/nota-ventas/list").permitAll()
-                                        .requestMatchers(HttpMethod.POST,"/api/v1/nota-ventas/vender").permitAll()
-                                        .requestMatchers(HttpMethod.POST,"/api/v1/companies/save").permitAll()
+                                       // .requestMatchers(HttpMethod.GET,"/api/v1/companies").permitAll()
+                                               //.requestMatchers(HttpMethod.GET,"/api/v1/nota-ventas").permitAll()
+                                        //.requestMatchers(HttpMethod.GET,"/api/v1/nota-ventas/list").permitAll()
+                                        //.requestMatchers(HttpMethod.POST,"/api/v1/nota-ventas/vender").permitAll()
+                                        //.requestMatchers(HttpMethod.POST,"/api/v1/companies/save").permitAll()
+
+                                        .requestMatchers(HttpMethod.POST,"/api/v1/auth/token").permitAll()
                                         .anyRequest().authenticated()
 
                 )
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                //.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .cors((cors) -> cors.configurationSource(apiConfigurationSource()));
         return http.build();
     }

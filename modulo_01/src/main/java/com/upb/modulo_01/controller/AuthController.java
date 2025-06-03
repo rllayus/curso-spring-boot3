@@ -33,7 +33,6 @@ public class AuthController {
 
     @PostMapping("/token")
     public ResponseEntity<OKAuthDto> token(@RequestBody AuthenticationDto data) {
-        String username = data.getUsername();
         MyUser user;
         try {
             Optional<MyUser> userOptional = userService.findByUsername(data.getUsername());

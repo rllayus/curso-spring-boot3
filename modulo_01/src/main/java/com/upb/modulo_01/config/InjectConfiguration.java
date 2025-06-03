@@ -17,6 +17,7 @@ import java.util.TimeZone;
 @Slf4j
 @Configuration
 public class InjectConfiguration {
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();

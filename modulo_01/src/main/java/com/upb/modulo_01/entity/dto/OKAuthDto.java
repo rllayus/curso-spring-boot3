@@ -12,7 +12,7 @@ import lombok.*;
 public class OKAuthDto {
     @JsonProperty("id_token")
     private String idToken;
-    @JsonProperty("refresh_token")
+    @JsonProperty("username")
     private String username;
 
 }

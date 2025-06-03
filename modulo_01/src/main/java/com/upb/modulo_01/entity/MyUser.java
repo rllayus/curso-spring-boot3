@@ -71,7 +71,6 @@ public class MyUser extends AuditableEntity implements UserDetails {
         return authorities;
     }
 
-
     @Override
     public String getPassword() {
         return password;
