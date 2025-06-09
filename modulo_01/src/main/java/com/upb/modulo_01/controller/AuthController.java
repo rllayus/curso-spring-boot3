@@ -3,6 +3,7 @@ package com.upb.modulo_01.controller;
 import com.upb.modulo_01.entity.MyUser;
 import com.upb.modulo_01.entity.dto.AuthenticationDto;
 import com.upb.modulo_01.entity.dto.OKAuthDto;
+import com.upb.modulo_01.integracion.ArtemisiaService;
 import com.upb.modulo_01.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +32,7 @@ public class AuthController {
     private final com.upb.modulo_01.config.JwtTokenProvider jwtTokenProvider;
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
+    private final ArtemisiaService artemisiaService;
 
     @PostMapping("/token")
     public ResponseEntity<OKAuthDto> token(@RequestBody AuthenticationDto data) {
@@ -49,6 +52,9 @@ public class AuthController {
             OKAuthDto  okAuthDto = new OKAuthDto();
             okAuthDto.setIdToken(token);
             okAuthDto.setUsername(user.getUsername());
+
+            artemisiaService.listarProducto();
+
             return ok(okAuthDto);
         } catch (BadCredentialsException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "");

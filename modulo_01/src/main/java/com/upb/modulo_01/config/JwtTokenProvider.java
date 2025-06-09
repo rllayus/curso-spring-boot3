@@ -24,6 +24,7 @@ import java.util.Optional;
 @Component
 public class JwtTokenProvider implements Serializable {
     private static final String USER_ID_CLAIM = "user_id";
+    private static final String USER_ROLE = "user_role";
 
     @Value("${security.jwt.token.secret-key:Ch4ng1t}")
     private String secretKey;
@@ -48,14 +49,13 @@ public class JwtTokenProvider implements Serializable {
                 .setIssuedAt(new Date())
                 .setExpiration(validity);
         claims.put(USER_ID_CLAIM, user.getId());
+        claims.put(USER_ROLE, user.getRole());
 
-        String token = Jwts.builder()
+        return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(validity)
                 .signWith(SignatureAlgorithm.HS256, secretKeyByte)
                 .compact();
-
-        return token;
     }
 
     private String getUsername(String token) {
