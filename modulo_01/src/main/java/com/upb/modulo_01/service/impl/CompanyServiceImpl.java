@@ -2,25 +2,36 @@ package com.upb.modulo_01.service.impl;
 
 import com.upb.modulo_01.entity.Company;
 import com.upb.modulo_01.entity.dto.CompanyRequestDto;
+import com.upb.modulo_01.entity.enums.StateEntity;
+import com.upb.modulo_01.exception.NotDataFoundException;
 import com.upb.modulo_01.repository.CompanyRepository;
 import com.upb.modulo_01.service.CompanyService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
 public class CompanyServiceImpl implements CompanyService {
-
     @Autowired
     private CompanyRepository companyRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Company> listAll() {
         return companyRepository.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Company> list(String nit, String nombre) {
+        return companyRepository.findAll(nit, nombre);
     }
 
     @Override
@@ -30,6 +41,35 @@ public class CompanyServiceImpl implements CompanyService {
                         .nit(company.getNit())
                         .state(company.getState())
                 .build());
+    }
 
+    @Override
+    @Transactional
+    public void update(Long companyId, CompanyRequestDto companyDto) {
+        this.companyRepository.updateCompany(
+                companyId, companyDto.getNit(), companyDto.getName(), companyDto.getState());
+
+        /**
+        Optional<Company> companyOptional = companyRepository.findById(companyId);
+        if(companyOptional.isEmpty()) {
+            throw new NotDataFoundException("Company not found");
+        }
+        Company company = companyOptional.get();
+        company.setName(companyDto.getName());
+        company.setNit(companyDto.getNit());
+        company.setState(companyDto.getState());
+         */
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Company> findById(Long id) {
+        return companyRepository.findById(id);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        this.companyRepository.deleteById(id);
     }
 }

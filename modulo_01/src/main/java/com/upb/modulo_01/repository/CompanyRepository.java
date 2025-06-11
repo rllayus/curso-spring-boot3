@@ -1,7 +1,9 @@
 package com.upb.modulo_01.repository;
 
 import com.upb.modulo_01.entity.Company;
+import com.upb.modulo_01.entity.enums.StateEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -22,7 +24,20 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
             @Param("pNit") String nit);
 
     List<Company> findByNameAndNit(String name, String nit);
+    @Query("SELECT c FROM Company c " +
+            "WHERE ( :pNit IS NULL OR c.nit=:pNit)" +
+            " AND ( :pName IS NULL OR c.name=:pName)")
+    List<Company> findAll(
+            @Param("pNit")String nit,
+            @Param("pName")String name);
 
-
-
+    @Modifying
+    @Query("UPDATE Company c " +
+            "SET c.nit=:pNit, c.name=:pName, c.state=:pState" +
+            " WHERE c.id=:pId")
+    void updateCompany(
+            @Param("pId")Long id,
+            @Param("pNit")String nit,
+            @Param("pName")String name,
+            @Param("pState")StateEntity state);
 }

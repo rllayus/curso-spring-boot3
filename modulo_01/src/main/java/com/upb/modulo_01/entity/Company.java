@@ -11,7 +11,7 @@ import lombok.*;
 @Setter
 @Entity
 @Table(name = "company")
-public class Company {
+public class Company extends AuditableEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMPANY_ID_GENERATOR")
     @SequenceGenerator(name = "COMPANY_ID_GENERATOR", sequenceName = "SEQ_COMPANY_ID", allocationSize = 1, initialValue = 1)

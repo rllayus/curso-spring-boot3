@@ -53,7 +53,7 @@ public class AuthController {
             okAuthDto.setIdToken(token);
             okAuthDto.setUsername(user.getUsername());
 
-            artemisiaService.listarProducto();
+            //artemisiaService.listarProducto();
 
             return ok(okAuthDto);
         } catch (BadCredentialsException e) {
