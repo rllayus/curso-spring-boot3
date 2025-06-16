@@ -20,6 +20,7 @@ import java.util.Optional;
 @Service
 public class CompanyServiceImpl implements CompanyService {
     @Autowired
+    @Lazy
     private CompanyRepository companyRepository;
 
     @Override

@@ -1,8 +1,10 @@
 package com.upb.modulo_01.integracion.impl;
 
+import com.upb.modulo_01.crypto.CryptoRSA;
 import com.upb.modulo_01.exception.OperationException;
 import com.upb.modulo_01.integracion.ArtemisiaService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,11 +31,18 @@ public class ArtemisiaServiceImpl implements ArtemisiaService {
     private int connectTimeout;
     @Value("${artemisia.read-timeout}")
     private int readTimeout;
+    @Autowired
+    private CryptoRSA cryptoRSA;
 
     @Scheduled(cron = "* 0/1 * * * *")
     public void actualizarToken() {
         log.info("Actualizando token");
-        login();
+        try {
+            log.info("Encriptado: " + cryptoRSA.rsaEncryptionOaepSha256("Hola"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //login();
     }
 
     @Override
