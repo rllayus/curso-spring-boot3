@@ -31,6 +31,7 @@ public class ArtemisiaServiceImpl implements ArtemisiaService {
     private int connectTimeout;
     @Value("${artemisia.read-timeout}")
     private int readTimeout;
+
     @Autowired
     private CryptoRSA cryptoRSA;
 
@@ -42,7 +43,7 @@ public class ArtemisiaServiceImpl implements ArtemisiaService {
         }catch (Exception e){
             e.printStackTrace();
         }
-        //login();
+        login();
     }
 
     @Override
