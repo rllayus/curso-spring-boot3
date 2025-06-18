@@ -40,9 +40,9 @@ import java.util.Optional;
 public class CompanyController {
     private final CompanyService companyService;
 
-    @Operation(summary = "Método para listar las ventas del vendedor",
-            description = "Método para listar las ventas del vendedor",
-            tags = {"transacciones"},
+    @Operation(summary = "Método para listar empresas",
+            description = "Método para listar empresas paginados",
+            tags = {"companies"},
             responses = {
                     @ApiResponse(description = "Operación satisfactorio", responseCode = "200",
                             content = @Content(mediaType = "application/json",

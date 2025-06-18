@@ -35,12 +35,11 @@ public class WebSecurityConfiguration implements WebMvcConfigurer, Serializable 
                 .authorizeHttpRequests(
                         authorizationManagerRequestMatcherRegistry ->
                                 authorizationManagerRequestMatcherRegistry
-                                       // .requestMatchers(HttpMethod.GET,"/api/v1/companies").permitAll()
-                                               //.requestMatchers(HttpMethod.GET,"/api/v1/nota-ventas").permitAll()
-                                        //.requestMatchers(HttpMethod.GET,"/api/v1/nota-ventas/list").permitAll()
-                                        //.requestMatchers(HttpMethod.POST,"/api/v1/nota-ventas/vender").permitAll()
-                                        //.requestMatchers(HttpMethod.POST,"/api/v1/companies/save").permitAll()
-
+                                        .requestMatchers("/swagger-ui/**",
+                                                "/v3/api-docs/**",
+                                                "/v3/api-docs",
+                                                "/api-docs/**",
+                                                "/swagger-ui.html").permitAll()
                                         .requestMatchers(HttpMethod.POST,"/api/v1/auth/token").permitAll()
                                         .anyRequest().authenticated()
 
