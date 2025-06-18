@@ -2,6 +2,7 @@ package com.upb.modulo_01.service.impl;
 
 import com.upb.modulo_01.entity.Company;
 import com.upb.modulo_01.entity.dto.CompanyRequestDto;
+import com.upb.modulo_01.entity.dto.CompanyResponseDto;
 import com.upb.modulo_01.entity.enums.StateEntity;
 import com.upb.modulo_01.exception.NotDataFoundException;
 import com.upb.modulo_01.repository.CompanyRepository;
@@ -9,6 +10,8 @@ import com.upb.modulo_01.service.CompanyService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,8 +34,8 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Company> list(String nit, String nombre) {
-        return companyRepository.findAll(nit, nombre);
+    public Page<CompanyResponseDto> list(String nit, String nombre, Pageable pageable) {
+        return companyRepository.findAll(nit, nombre, pageable);
     }
 
     @Override
@@ -73,4 +76,5 @@ public class CompanyServiceImpl implements CompanyService {
     public void delete(Long id) {
         this.companyRepository.deleteById(id);
     }
+
 }

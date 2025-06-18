@@ -1,7 +1,10 @@
 package com.upb.modulo_01.repository;
 
 import com.upb.modulo_01.entity.Company;
+import com.upb.modulo_01.entity.dto.CompanyResponseDto;
 import com.upb.modulo_01.entity.enums.StateEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -27,9 +30,9 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
     @Query("SELECT c FROM Company c " +
             "WHERE ( :pNit IS NULL OR c.nit=:pNit)" +
             " AND ( :pName IS NULL OR c.name=:pName)")
-    List<Company> findAll(
+    Page<CompanyResponseDto> findAll(
             @Param("pNit")String nit,
-            @Param("pName")String name);
+            @Param("pName")String name, Pageable pageable);
 
     @Modifying
     @Query("UPDATE Company c " +

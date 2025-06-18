@@ -37,13 +37,7 @@ public class ArtemisiaServiceImpl implements ArtemisiaService {
 
     @Scheduled(cron = "* 0/1 * * * *")
     public void actualizarToken() {
-        log.info("Actualizando token");
-        try {
-            log.info("Encriptado: " + cryptoRSA.rsaEncryptionOaepSha256("Hola"));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        login();
+        //login();
     }
 
     @Override
