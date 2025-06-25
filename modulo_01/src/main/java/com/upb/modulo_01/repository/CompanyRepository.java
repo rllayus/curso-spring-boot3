@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -27,11 +28,20 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
             @Param("pNit") String nit);
 
     List<Company> findByNameAndNit(String name, String nit);
-    @Query("SELECT c FROM Company c " +
+
+    @Query(value = "SELECT c FROM Company c " +
             "WHERE ( :pNit IS NULL OR c.nit=:pNit)" +
-            " AND ( :pName IS NULL OR c.name=:pName)")
+            " AND ( :pName IS NULL OR c.name=:pName) " +
+            " AND c.createdDate BETWEEN :pFrom AND :pTo",
+
+            countQuery = "SELECT count (c) FROM Company c " +
+            "WHERE ( :pNit IS NULL OR c.nit=:pNit)" +
+            " AND ( :pName IS NULL OR c.name=:pName) " +
+            " AND c.createdDate BETWEEN :pFrom AND :pTo")
     Page<CompanyResponseDto> findAll(
             @Param("pNit")String nit,
+            @Param("pFrom") Date from,
+            @Param("pTo") Date to,
             @Param("pName")String name, Pageable pageable);
 
     @Modifying

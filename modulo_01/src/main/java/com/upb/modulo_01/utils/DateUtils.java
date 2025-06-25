@@ -18,7 +18,6 @@ public class DateUtils {
     }
 
     public static Date formatToEnd(Date date) {
-
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.HOUR_OF_DAY, 23);

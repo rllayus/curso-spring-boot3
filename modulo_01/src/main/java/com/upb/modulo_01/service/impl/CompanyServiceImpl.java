@@ -16,6 +16,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,8 +35,8 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<CompanyResponseDto> list(String nit, String nombre, Pageable pageable) {
-        return companyRepository.findAll(nit, nombre, pageable);
+    public Page<CompanyResponseDto> list(Date from, Date to, String nit, String nombre, Pageable pageable) {
+        return companyRepository.findAll(nit,  from, to, nombre, pageable);
     }
 
     @Override

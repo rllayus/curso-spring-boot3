@@ -69,7 +69,7 @@ public class CompanyController {
 
         try {
             Pageable pageable = PageRequest.of(page, size, Sort.by(sortDir, sortBy));
-            return ResponseEntity.ok(companyService.list(nit, nombre, pageable));
+            return ResponseEntity.ok(companyService.list(DateUtils.formatToStart(from), DateUtils.formatToEnd(to), nit, nombre,  pageable));
         } catch (OperationException e) {
             log.error("Error al listar el empresas. Causa:{}", e.getMessage());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
