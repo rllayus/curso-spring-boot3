@@ -1,6 +1,9 @@
 FROM amazoncorretto:21
-LABEL authors="rlaredo"
+
+LABEL authors="rllayus"
+
 ARG JAR_FILE
+
 COPY config config
 COPY ${JAR_FILE} app.jar
 EXPOSE 8080

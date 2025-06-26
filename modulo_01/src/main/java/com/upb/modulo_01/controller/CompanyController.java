@@ -1,6 +1,7 @@
 package com.upb.modulo_01.controller;
 
 import com.upb.modulo_01.entity.Company;
+import com.upb.modulo_01.entity.MyUser;
 import com.upb.modulo_01.entity.dto.CompanyRequestDto;
 import com.upb.modulo_01.entity.dto.CompanyResponseDto;
 import com.upb.modulo_01.entity.dto.PersonaDto;
@@ -66,6 +67,7 @@ public class CompanyController {
         if (!SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "No autorizado");
         }
+        MyUser user = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         try {
             Pageable pageable = PageRequest.of(page, size, Sort.by(sortDir, sortBy));

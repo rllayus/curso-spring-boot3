@@ -1,27 +1,24 @@
 package com.upb.modulo_01.service.impl;
 
+import org.apache.commons.codec.digest.HmacAlgorithms;
+import org.apache.commons.codec.digest.HmacUtils;
 import com.upb.modulo_01.entity.Company;
 import com.upb.modulo_01.entity.dto.CompanyRequestDto;
 import com.upb.modulo_01.entity.dto.CompanyResponseDto;
-import com.upb.modulo_01.entity.enums.StateEntity;
-import com.upb.modulo_01.exception.NotDataFoundException;
 import com.upb.modulo_01.repository.CompanyRepository;
 import com.upb.modulo_01.service.CompanyService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-@AllArgsConstructor
-@Service
+@Repository
 public class CompanyServiceImpl implements CompanyService {
     @Autowired
     @Lazy

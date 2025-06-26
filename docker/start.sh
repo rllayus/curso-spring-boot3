@@ -18,7 +18,13 @@ REPOSITORY_IMAGE="rllayus"
 #cp -f $JAR_FILE_PATH .
 
 Echo '<<RL. --> Compilando imagen docker>>'
-docker build --build-arg="JAR_FILE=$JAR_FILE" --rm  -t  $IMAGE_NAME .
+#docker build --build-arg="JAR_FILE=$JAR_FILE" --rm  -t  $IMAGE_NAME .
+
+#Comando para compilar la imagen
+docker build --build-arg="JAR_FILE=modulo_01-0.0.1-SNAPSHOT.jar" --rm  -t  modulo-api-imagen .
+
+#Comando para ejecutar la imagen
+docker run --env-file ./local.env -p 8080:8080  --name modulo-api modulo-api-imagen
 
 #docker build --build-arg="JAR_FILE=$JAR_FILE" --rm  --platform linux/amd64 -t $REPOSITORY_IMAGE/$IMAGE_NAME --push .
 
