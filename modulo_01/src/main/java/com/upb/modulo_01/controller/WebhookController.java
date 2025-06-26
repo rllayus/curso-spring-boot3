@@ -22,7 +22,8 @@ import static org.springframework.http.ResponseEntity.ok;
 @RequestMapping("/api/v1/stereum")
 public class WebhookController {
 
-    @PostMapping(value = "/inbound", produces = MediaType.APPLICATION_JSON_VALUE, consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @PostMapping(value = "/inbound", produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseEntity<String> outbound(
             @RequestHeader("x-signature") String signature,
             @RequestHeader("x-timestamp") long xTimestamp,
@@ -57,6 +58,7 @@ public class WebhookController {
         if (!requestDto.getNotificationType().equals("transaction")) {
             throw new OperationException("No corresponde a este método la notificación");
         }
+
 
         try {
 
